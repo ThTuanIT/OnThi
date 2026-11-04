@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ôn tập Chi hội Máu 08/5</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#697386;--red:#d92d45;--red2:#fff0f2;--line:#e6eaf0;--green:#16845b;--greenbg:#e9f8f1;--shadow:0 12px 35px #1720330d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(120deg,#a90f2d,#e34258);color:#fff;padding:28px 20px 64px}
+.wrap{max-width:1080px;margin:auto;padding:0 18px}.top{display:flex;justify-content:space-between;gap:15px;align-items:center}.brand{font-weight:800;letter-spacing:.2px}.pill{border:1px solid #ffffff55;border-radius:99px;padding:6px 12px;font-size:12px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:28px 0 8px}.sub{opacity:.9;margin:0;max-width:650px}
+main{margin-top:-38px;padding-bottom:50px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat,.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.stat{padding:16px 18px}.stat b{display:block;font-size:24px}.stat span{font-size:12px;color:var(--muted)}
+.layout{display:grid;grid-template-columns:270px 1fr;gap:18px;margin-top:18px}.panel{padding:18px}.side h3{margin:0 0 12px}.field{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit;outline:none}.field:focus{border-color:var(--red);box-shadow:0 0 0 3px #d92d4515}
+label{display:block;color:var(--muted);font-size:12px;font-weight:700;margin:14px 0 6px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 16px}.tab,button{border:0;border-radius:10px;padding:10px 13px;font:600 13px inherit;cursor:pointer}.tab{background:#f0f2f6;color:#596273}.tab.active{background:var(--red2);color:var(--red)}button.primary{background:var(--red);color:white}button.secondary{background:#f0f2f6;color:var(--ink)}button:disabled{opacity:.45;cursor:not-allowed}
+.topic-list{display:flex;flex-direction:column;gap:5px;max-height:370px;overflow:auto}.topic{display:flex;justify-content:space-between;gap:8px;text-align:left;background:transparent;color:#475166;padding:9px;border-radius:9px;font-weight:500}.topic:hover,.topic.selected{background:var(--red2);color:var(--red)}.topic small{color:#8b93a2}
+.question-head{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:13px}.progress{height:7px;background:#edf0f4;border-radius:20px;overflow:hidden;margin:12px 0 22px}.progress>div{height:100%;background:var(--red);width:0;transition:width .2s}
+.qtext{font-size:20px;line-height:1.45;font-weight:750;margin:0 0 20px}.answers{display:grid;gap:10px}.answer{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:#fff;border:1px solid var(--line);padding:13px 14px;border-radius:12px;color:var(--ink);font-size:14px;font-weight:500;line-height:1.45}.answer:hover{border-color:#e79aa5;background:#fffafb}.letter{flex:none;width:27px;height:27px;border-radius:8px;background:#f0f2f6;display:grid;place-items:center;font-weight:800;color:#657084}.answer.correct{border-color:#6bc39d;background:var(--greenbg)}.answer.correct .letter{background:#c9f0dd;color:var(--green)}.answer.wrong{border-color:#ef9aa5;background:#fff0f1}.answer.wrong .letter{background:#ffd9de;color:#b42336}
+.feedback{margin-top:15px;padding:14px;border-radius:12px;background:#f5f7fa;border:1px solid var(--line);display:none}.feedback.show{display:block}.feedback.good{background:var(--greenbg);border-color:#bce8d2}.feedback.bad{background:#fff4f4;border-color:#f2c4ca}.feedback strong{display:block;margin-bottom:5px}.explain{color:#4d586b;font-size:14px;margin-top:8px;white-space:pre-line}
+.actions{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:20px}.actions .right{display:flex;gap:8px}.hint{font-size:12px;color:var(--muted);margin-top:15px}.empty{text-align:center;padding:40px 15px;color:var(--muted)}
+.study-answer{display:none;margin-top:15px;background:#f8f9fb;border-radius:12px;padding:14px}.study-answer.show{display:block}.search-count{font-size:12px;color:var(--muted);margin-top:8px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.side{order:2}.stats{gap:8px}.stat{padding:12px}.stat b{font-size:20px}.panel{padding:15px}.qtext{font-size:18px}.topic-list{max-height:220px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="top"><div class="brand">♥ HỌC CÙNG MÁU 08/5</div><span class="pill" id="dataStatus">Đang tải dữ liệu…</span></div>
+ <h1>Ôn tập tuyển chọn<br>tình nguyện viên</h1>
+ <p class="sub">Luyện tập kiến thức Chi hội Máu 08/5 và hiến máu tình nguyện. Học theo chủ đề, làm bài trắc nghiệm và theo dõi tiến độ của bạn.</p>
+</div></header>
+<main class="wrap">
+ <section class="panel" id="dataLoader" style="margin-bottom:16px;box-shadow:none">
+  <b>📂 Dữ liệu câu hỏi (JSON)</b>
+  <p class="hint" style="margin:6px 0 12px">Website đọc câu hỏi từ file <b>cauhoi.json</b>. Khi cập nhật nội dung, chỉ cần thay file JSON này; không cần sửa mã website.</p>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+   <button class="primary" id="chooseJson">Chọn file JSON</button>
+   <input type="file" id="jsonFile" accept=".json,application/json" hidden>
+   <span class="hint" id="loadMessage" style="margin:0">Đang thử tải cauhoi.json cùng thư mục…</span>
+  </div>
+ </section>
+ <section class="stats">
+  <div class="stat"><b id="totalStat">—</b><span>Tổng số câu hỏi</span></div>
+  <div class="stat"><b id="doneStat">0</b><span>Câu đã trả lời</span></div>
+  <div class="stat"><b id="scoreStat">—</b><span>Tỷ lệ đúng</span></div>
+ </section>
+ <div class="layout">
+  <aside class="panel side">
+   <h3>📚 Nội dung ôn tập</h3>
+   <label for="search">Tìm câu hỏi</label><input id="search" class="field" placeholder="Nhập từ khóa...">
+   <label>Chế độ học</label>
+   <div class="tabs" style="display:grid;grid-template-columns:1fr 1fr 1fr">
+    <button class="tab active" id="quizMode">Trắc nghiệm</button><button class="tab" id="studyMode">Học đáp án</button><button class="tab" id="examMode">Đề 30 câu</button>
+   </div>
+   <label>Chủ đề</label><div class="topic-list" id="topics"></div>
+   <div class="search-count" id="filterCount"></div>
+   <div style="margin-top:15px"><button class="secondary" id="resetProgress" style="width:100%">Xóa tiến độ học</button></div>
+  </aside>
+  <section class="panel">
+   <div id="content">
+    <div class="question-head"><span id="number">Câu 1 / 351</span><span id="topicName"></span></div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <h2 class="qtext" id="question"></h2>
+    <div class="answers" id="answers"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="study-answer" id="studyAnswer"></div>
+    <div class="actions">
+     <button class="secondary" id="prev">← Câu trước</button>
+     <div class="right"><button class="secondary" id="shuffle">Trộn câu</button><button class="primary" id="next">Câu tiếp →</button></div>
+    </div>
+    <p class="hint" id="hint">Chọn một đáp án để xem kết quả và giải thích (nếu có).</p>
+   </div>
+  </section>
+ </div>
+</main>
+<script>
+let DATA = null;
+const $loader=id=>document.getElementById(id);
+function validateAndStart(obj, source){
+ if(!obj || !Array.isArray(obj.cau_hoi) || !obj.cau_hoi.length) throw new Error('JSON không đúng cấu trúc: cần có mảng cau_hoi.');
+ DATA=obj;
+ $loader('dataLoader').style.display='none';
+ $loader('dataStatus').textContent=`${obj.cau_hoi.length} câu hỏi · ${source}`;
+ initApp(DATA);
+}
+$loader('chooseJson').addEventListener('click',()=>$loader('jsonFile').click());
+$loader('jsonFile').addEventListener('change',async e=>{
+ const file=e.target.files?.[0]; if(!file)return;
+ try{const obj=JSON.parse(await file.text());validateAndStart(obj,file.name)}
+ catch(err){$loader('loadMessage').textContent='Không đọc được JSON: '+err.message}
+});
+(async()=>{
+ try{const response=await fetch('./cauhoi.json');if(!response.ok)throw new Error('HTTP '+response.status);const obj=await response.json();validateAndStart(obj,'cauhoi.json')}
+ catch(err){$loader('loadMessage').textContent='Chưa tự tải được dữ liệu. Hãy bấm “Chọn file JSON” và chọn cauhoi.json (hoặc bật website qua máy chủ cục bộ).'}
+})();
+
+function initApp(DATA){
+const KEY='mau085_progress_v1';
+let progress={}; try{progress=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+let mode='quiz', activeTopic='Tất cả', filtered=DATA.cau_hoi.slice(), index=0, selected=null, revealed=false;
+let examMode=false, examQuestions=[], examAnswers={}, examIndex=0, examFinished=false;
+const EXAM_PLAN=[
+ ['Thông tin cơ bản về Viện Huyết học - Truyền máu TW và Hội LHTN Việt Nam',5],
+ ['Thông tin cơ bản về Chi hội trực thuộc',5],
+ ['Thông tin cơ bản về hiến máu tình nguyện',10],
+ ['Văn hoá tổ chức Hội Máu Việt Nam',5],
+ ['Vận động và tổ chức hiến máu',5]
+];
+const $=id=>document.getElementById(id);
+const contentTemplate=$('content').innerHTML;
+const topics=['Tất cả',...new Set(DATA.cau_hoi.map(q=>q.chu_de||'Chưa phân loại'))];
+function save(){localStorage.setItem(KEY,JSON.stringify(progress)); updateStats()}
+function updateStats(){
+ const vals=Object.values(progress), done=vals.length, correct=vals.filter(x=>x.correct).length;
+ $('doneStat').textContent=done;$('scoreStat').textContent=done?Math.round(correct/done*100)+'%':'—';
+}
+function renderTopics(){
+ $('topics').innerHTML='';
+ topics.forEach(t=>{const count=t==='Tất cả'?DATA.cau_hoi.length:DATA.cau_hoi.filter(q=>(q.chu_de||'Chưa phân loại')===t).length;
+ const b=document.createElement('button');b.className='topic'+(activeTopic===t?' selected':'');b.innerHTML=`<span>${escapeHtml(t)}</span><small>${count}</small>`;
+ b.onclick=()=>{activeTopic=t;applyFilter()};$('topics').appendChild(b)});
+}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function applyFilter(){
+ const term=$('search').value.trim().toLocaleLowerCase('vi');
+ filtered=DATA.cau_hoi.filter(q=>(activeTopic==='Tất cả'||(q.chu_de||'Chưa phân loại')===activeTopic)&&(!term||(q.cau_hoi+' '+Object.values(q.dap_an||{}).join(' ')).toLocaleLowerCase('vi').includes(term)));
+ index=0;selected=null;revealed=false;renderTopics();$('filterCount').textContent=`Hiển thị ${filtered.length} / ${DATA.cau_hoi.length} câu`;render();
+}
+function render(){
+ if(examMode){renderExamQuestion();return}
+ if(!filtered.length){$('content').innerHTML='<div class="empty">Không tìm thấy câu hỏi phù hợp.<br>Hãy thử từ khóa hoặc chủ đề khác.</div>';return}
+ const q=filtered[index], saved=progress[q.stt];
+ $('number').textContent=`Câu ${index+1} / ${filtered.length} · Mã ${q.stt}`;
+ $('topicName').textContent=q.chu_de||'';
+ $('progressBar').style.width=((index+1)/filtered.length*100)+'%';
+ $('question').textContent=q.cau_hoi;
+ $('answers').innerHTML='';$('feedback').className='feedback';$('feedback').innerHTML='';
+ $('studyAnswer').className='study-answer';$('studyAnswer').innerHTML='';
+ $('hint').textContent=mode==='quiz'?'Chọn một đáp án để xem kết quả và giải thích (nếu có).':'Tự suy nghĩ trước, sau đó bấm “Hiện đáp án”.';
+ const letters=Object.keys(q.dap_an||{});
+ letters.forEach(letter=>{
+  const b=document.createElement('button');b.className='answer';b.innerHTML=`<span class="letter">${letter}</span><span>${escapeHtml(q.dap_an[letter])}</span>`;
+  if(mode==='quiz'){
+   if(saved&&saved.answer===letter){b.classList.add(saved.correct?'correct':'wrong')}
+   if(saved&&letter===q.dap_an_dung)b.classList.add('correct');
+   b.onclick=()=>choose(letter);
+  } else {b.disabled=true;$('answers').appendChild(b)}
+  $('answers').appendChild(b);
+ });
+ if(mode==='study'){
+  const btn=document.createElement('button');btn.className='primary';btn.style.marginTop='14px';btn.textContent='Hiện đáp án';btn.onclick=()=>showStudy(q);$('answers').appendChild(btn);
+  if(revealed)showStudy(q);
+ }else if(saved){showFeedback(q,saved.answer,saved.correct)}
+ $('prev').disabled=index===0;$('next').textContent=index===filtered.length-1?'Hoàn thành':'Câu tiếp →';
+ updateStats();
+}
+function choose(letter){
+ const q=filtered[index];if(progress[q.stt])return;
+ const correct=letter===q.dap_an_dung;progress[q.stt]={answer:letter,correct};save();
+ [...$('answers').children].forEach((b,i)=>{if(i<Object.keys(q.dap_an).length){const l=b.querySelector('.letter').textContent;if(l===q.dap_an_dung)b.classList.add('correct');else if(l===letter)b.classList.add('wrong');b.disabled=true}});
+ showFeedback(q,letter,correct);
+}
+function showFeedback(q,letter,correct){
+ const box=$('feedback');box.className='feedback show '+(correct?'good':'bad');
+ box.innerHTML=`<strong>${correct?'✓ Chính xác!':'✕ Chưa chính xác.'} Đáp án đúng: ${q.dap_an_dung} — ${escapeHtml(q.dap_an_dung_noi_dung||q.dap_an?.[q.dap_an_dung]||'')}</strong>${letter?`<span>Bạn chọn: ${letter}</span>`:''}${q.giai_thich?`<div class="explain">${escapeHtml(q.giai_thich)}</div>`:''}`;
+}
+function showStudy(q){revealed=true;$('studyAnswer').className='study-answer show';$('studyAnswer').innerHTML=`<b>Đáp án đúng: ${q.dap_an_dung}</b><div>${escapeHtml(q.dap_an_dung_noi_dung||q.dap_an?.[q.dap_an_dung]||'')}</div>${q.giai_thich?`<div class="explain">${escapeHtml(q.giai_thich)}</div>`:''}`}
+function next(){if(index<filtered.length-1){index++;revealed=false;render()}else{$('question').textContent='Bạn đã xem hết danh sách câu hỏi!';$('answers').innerHTML='';$('feedback').className='feedback';$('studyAnswer').className='study-answer'}}
+$('prev').onclick=()=>{if(index>0){index--;revealed=false;render()}};
+$('next').onclick=next;
+$('shuffle').onclick=()=>{for(let i=filtered.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[filtered[i],filtered[j]]=[filtered[j],filtered[i]]}index=0;revealed=false;render()};
+$('search').addEventListener('input',applyFilter);
+$('quizMode').onclick=()=>{examMode=false;setMode('quiz')};$('studyMode').onclick=()=>{examMode=false;setMode('study')};$('examMode').onclick=()=>startExam();
+function setMode(m){mode=m;examMode=false;$('content').innerHTML=contentTemplate;$('quizMode').classList.toggle('active',m==='quiz');$('studyMode').classList.toggle('active',m==='study');$('examMode').classList.remove('active');render()}
+function startExam(){
+ examQuestions=[];examAnswers={};examIndex=0;examFinished=false;
+ EXAM_PLAN.forEach(([topic,count])=>{const pool=DATA.cau_hoi.filter(q=>q.chu_de===topic);if(pool.length<count)throw new Error(`Chủ đề \"${topic}\" chỉ có ${pool.length}/${count} câu, không đủ để tạo đề.`);const shuffled=pool.slice();for(let i=shuffled.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];}examQuestions.push(...shuffled.slice(0,count));});
+ for(let i=examQuestions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[examQuestions[i],examQuestions[j]]=[examQuestions[j],examQuestions[i]];}examMode=true;
+ $('quizMode').classList.remove('active');$('studyMode').classList.remove('active');$('examMode').classList.add('active');
+ renderExamQuestion();
+}
+function renderExamQuestion(){
+ const q=examQuestions[examIndex];
+ if(examFinished){renderExamResult();return}
+ $('content').innerHTML=`<div class="question-head"><span>ĐỀ ÔN TẬP NGẪU NHIÊN · Câu ${examIndex+1}/30</span><span>${Object.keys(examAnswers).length}/30 đã làm</span></div><div class="progress"><div id="examProgress" style="width:${(examIndex+1)/30*100}%"></div></div><div class="hint" style="margin:0 0 8px">${escapeHtml(q.chu_de)}</div><h2 class="qtext">${escapeHtml(q.cau_hoi)}</h2><div class="answers" id="examAnswers"></div><div class="actions"><button class="secondary" id="examPrev" ${examIndex===0?'disabled':''}>← Câu trước</button><div class="right"><button class="secondary" id="examNext">${examIndex===29?'Xem lại câu cuối':'Câu tiếp →'}</button><button class="primary" id="examSubmit">Nộp bài</button></div></div><p class="hint">Đề gồm 30 câu: 5 – 5 – 10 – 5 – 5 theo đúng cơ cấu chủ đề. Có thể chuyển câu và sửa đáp án trước khi nộp.</p>`;
+ const host=$('examAnswers');Object.entries(q.dap_an||{}).forEach(([letter,value])=>{const b=document.createElement('button');b.className='answer'+(examAnswers[q.stt]===letter?' correct':'');b.innerHTML=`<span class="letter">${letter}</span><span>${escapeHtml(value)}</span>`;b.onclick=()=>{examAnswers[q.stt]=letter;renderExamQuestion()};host.appendChild(b)});
+ $('examPrev').onclick=()=>{if(examIndex>0){examIndex--;renderExamQuestion()}};
+ $('examNext').onclick=()=>{examIndex=Math.min(29,examIndex+1);renderExamQuestion()};
+ $('examSubmit').onclick=()=>{const unanswered=30-Object.keys(examAnswers).length;if(unanswered&&!confirm(`Bạn còn ${unanswered} câu chưa trả lời. Vẫn nộp bài?`))return;examFinished=true;renderExamResult()};
+}
+function renderExamResult(){
+ const correct=examQuestions.filter(q=>examAnswers[q.stt]===q.dap_an_dung).length;
+ const rows=EXAM_PLAN.map(([topic,count])=>{const qs=examQuestions.filter(q=>q.chu_de===topic);const n=qs.filter(q=>examAnswers[q.stt]===q.dap_an_dung).length;return `<div class="stat" style="box-shadow:none;margin:8px 0"><b>${n}/${count}</b><span>${escapeHtml(topic)}</span></div>`}).join('');
+ $('content').innerHTML=`<div style="text-align:center;padding:12px 0 20px"><div style="font-size:13px;color:var(--muted);font-weight:700">KẾT QUẢ ĐỀ ÔN TẬP</div><div style="font-size:48px;font-weight:850;color:var(--red);line-height:1.2;margin:8px 0">${correct}/30</div><div style="font-weight:700">${Math.round(correct/30*100)}% câu trả lời đúng</div><p class="hint">Kết quả theo từng chủ đề</p></div>${rows}<div class="actions"><button class="secondary" id="examReview">Xem lại đáp án</button><button class="primary" id="examAgain">Tạo đề ngẫu nhiên mới</button></div><p class="hint">Mỗi lần tạo đề mới, hệ thống lấy ngẫu nhiên câu hỏi trong từng chủ đề; câu hỏi không lặp trong cùng một đề.</p>`;
+ $('examReview').onclick=()=>{examFinished=false;examIndex=0;renderExamQuestion()};$('examAgain').onclick=startExam;
+ }
+$('resetProgress').onclick=()=>{if(confirm('Bạn có chắc muốn xóa toàn bộ tiến độ đã lưu trên trình duyệt này?')){progress={};save();render()}};
+$('totalStat').textContent=DATA.tong_so_cau||DATA.cau_hoi.length;
+renderTopics();$('filterCount').textContent=`Hiển thị ${filtered.length} / ${DATA.cau_hoi.length} câu`;render();updateStats();
+}
+</script>
+</body></html>
